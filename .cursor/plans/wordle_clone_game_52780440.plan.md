@@ -13,19 +13,19 @@ todos:
     status: completed
   - id: implement-words
     content: Add word lists (solutions and valid guesses)
-    status: in_progress
+    status: completed
   - id: implement-game-logic
     content: Core game mechanics (word validation, color feedback, win/lose)
-    status: pending
+    status: completed
   - id: implement-ui
     content: DOM manipulation, animations, keyboard handling
-    status: pending
+    status: completed
   - id: implement-stats
     content: Statistics tracking (games played, wins, guess distribution) and localStorage
-    status: pending
+    status: completed
   - id: add-readme
     content: Documentation with GitHub Pages deployment instructions
-    status: pending
+    status: completed
 isProject: false
 ---
 
