@@ -3,6 +3,14 @@ import { getRandomWord, isValidWord, WORD_LENGTH, MAX_GUESSES } from '../data';
 import type { Guess, TileStatus, GameStats, KeyboardState } from '../types';
 
 const STATS_KEY = 'wordix-stats';
+const GAME_STATE_KEY = 'wordix-game-state';
+
+interface GameState {
+  targetWord: string;
+  guesses: Guess[];
+  gameOver: boolean;
+  won: boolean;
+}
 
 function loadStats(): GameStats {
   const saved = localStorage.getItem(STATS_KEY);
@@ -22,6 +30,22 @@ function saveStats(stats: GameStats): void {
   localStorage.setItem(STATS_KEY, JSON.stringify(stats));
 }
 
+function loadGameState(): GameState | null {
+  const saved = localStorage.getItem(GAME_STATE_KEY);
+  if (saved) {
+    try {
+      return JSON.parse(saved);
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
+function saveGameState(state: GameState): void {
+  localStorage.setItem(GAME_STATE_KEY, JSON.stringify(state));
+}
+
 export function useGame() {
   const [targetWord, setTargetWord] = useState<string>('');
   const [guesses, setGuesses] = useState<Guess[]>([]);
@@ -32,9 +56,11 @@ export function useGame() {
   const [stats, setStats] = useState<GameStats>(loadStats);
   const [shakeRow, setShakeRow] = useState<boolean>(false);
   const [bounceRow, setBounceRow] = useState<boolean>(false);
+  const [initialized, setInitialized] = useState<boolean>(false);
 
   const newGame = useCallback(() => {
-    setTargetWord(getRandomWord());
+    const newWord = getRandomWord();
+    setTargetWord(newWord);
     setGuesses([]);
     setCurrentGuess('');
     setGameOver(false);
@@ -42,11 +68,27 @@ export function useGame() {
     setMessage('');
     setShakeRow(false);
     setBounceRow(false);
+    saveGameState({ targetWord: newWord, guesses: [], gameOver: false, won: false });
   }, []);
 
   useEffect(() => {
-    newGame();
-  }, [newGame]);
+    const savedState = loadGameState();
+    if (savedState && savedState.targetWord && !savedState.gameOver) {
+      setTargetWord(savedState.targetWord);
+      setGuesses(savedState.guesses);
+      setGameOver(savedState.gameOver);
+      setWon(savedState.won);
+    } else {
+      newGame();
+    }
+    setInitialized(true);
+  }, []);
+
+  useEffect(() => {
+    if (initialized && targetWord) {
+      saveGameState({ targetWord, guesses, gameOver, won });
+    }
+  }, [initialized, targetWord, guesses, gameOver, won]);
 
   const showMessage = useCallback((msg: string, duration = 2000) => {
     setMessage(msg);
