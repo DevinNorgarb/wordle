@@ -13,7 +13,7 @@
   --modal-bg: rgba(0, 0, 0, 0.5);
   --tile-size: 62px;
   --tile-gap: 5px;
-  --board-padding: 10px;
+  --board-padding: 4px;
   --key-height: 58px;
 }
 
@@ -155,9 +155,9 @@ header h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 4px 0;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 0;
   padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
   overflow: hidden;
 }
@@ -167,7 +167,7 @@ header h1 {
   .game-container {
     --tile-size: clamp(40px, min(14vw, 10.5dvh), 58px);
     --tile-gap: clamp(3px, 1vw, 5px);
-    --board-padding: clamp(4px, 1.5vw, 10px);
+    --board-padding: clamp(2px, 1vw, 4px);
     --key-height: clamp(42px, min(10vw, 7dvh), 54px);
   }
 
@@ -196,7 +196,7 @@ header h1 {
   }
 
   .play-main {
-    padding: 4px 0;
+    padding: 0;
     padding-bottom: max(10px, calc(6px + env(safe-area-inset-bottom, 0px)));
   }
 }
