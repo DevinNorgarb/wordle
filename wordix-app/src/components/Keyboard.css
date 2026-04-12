@@ -1,7 +1,7 @@
 .keyboard {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: clamp(4px, 1.2vw, 6px);
   width: 100%;
   max-width: 500px;
 }
@@ -9,16 +9,19 @@
 .keyboard-row {
   display: flex;
   justify-content: center;
-  gap: 6px;
+  align-items: stretch;
+  gap: clamp(3px, 1vw, 6px);
+  width: 100%;
 }
 
 .key {
+  flex: 1 1 0;
+  min-width: 0;
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: clamp(0.65rem, 3.2vw, 0.85rem);
   font-weight: 700;
   padding: 0;
-  min-width: 43px;
-  height: 58px;
+  height: var(--key-height, 58px);
   border: none;
   border-radius: 4px;
   background-color: var(--key-bg);
@@ -27,6 +30,7 @@
   user-select: none;
   text-transform: uppercase;
   transition: background-color 0.2s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .key:hover {
@@ -38,8 +42,8 @@
 }
 
 .key.wide-key {
-  min-width: 65px;
-  font-size: 0.75rem;
+  flex: 1.4 1 0;
+  font-size: clamp(0.55rem, 2.8vw, 0.75rem);
 }
 
 .key.correct {
@@ -55,23 +59,4 @@
 .key.absent {
   background-color: var(--absent);
   color: white;
-}
-
-@media (max-width: 400px) {
-  .key {
-    min-width: 32px;
-    height: 50px;
-    font-size: 0.75rem;
-  }
-
-  .key.wide-key {
-    min-width: 50px;
-    font-size: 0.65rem;
-  }
-}
-
-@media (max-height: 700px) {
-  .key {
-    height: 48px;
-  }
 }

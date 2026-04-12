@@ -78,30 +78,33 @@ function App() {
         </div>
       </header>
 
-      <main>
-        <div className="message-container">
-          <div className={`message ${message ? 'show' : ''} ${gameOver && !won ? 'error' : gameOver && won ? 'success' : ''}`}>
-            {message}
+      <main className="play-main">
+        <div className="board-section">
+          <div className="message-container">
+            <div className={`message ${message ? 'show' : ''} ${gameOver && !won ? 'error' : gameOver && won ? 'success' : ''}`}>
+              {message}
+            </div>
           </div>
+
+          <Board
+            guesses={guesses}
+            currentGuess={currentGuess}
+            shakeRow={shakeRow}
+            bounceRow={bounceRow}
+          />
         </div>
 
-        <Board
-          guesses={guesses}
-          currentGuess={currentGuess}
-          shakeRow={shakeRow}
-          bounceRow={bounceRow}
-        />
-
-        <Keyboard
-          keyboardState={getKeyboardState()}
-          onKey={addLetter}
-          onEnter={submitGuess}
-          onBackspace={removeLetter}
-        />
-
-        <button className="new-game-btn" onClick={newGame}>
-          New Game
-        </button>
+        <div className="game-footer">
+          <Keyboard
+            keyboardState={getKeyboardState()}
+            onKey={addLetter}
+            onEnter={submitGuess}
+            onBackspace={removeLetter}
+          />
+          <button type="button" className="new-game-btn" onClick={newGame}>
+            New Game
+          </button>
+        </div>
       </main>
 
       <Modal isOpen={showHelp} onClose={() => setShowHelp(false)} title="How To Play">
