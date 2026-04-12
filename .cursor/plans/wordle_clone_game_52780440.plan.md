@@ -4,16 +4,16 @@ overview: Create a Wordle-like word-guessing game using vanilla HTML/CSS/JS for 
 todos:
   - id: setup-project
     content: Create project structure with index.html, css/, js/ directories
-    status: pending
+    status: completed
   - id: implement-html
     content: Build HTML structure (game board grid, keyboard, modals)
-    status: pending
+    status: completed
   - id: implement-css
     content: Style the game with animations, dark mode, responsive design
-    status: pending
+    status: completed
   - id: implement-words
     content: Add word lists (solutions and valid guesses)
-    status: pending
+    status: in_progress
   - id: implement-game-logic
     content: Core game mechanics (word validation, color feedback, win/lose)
     status: pending
