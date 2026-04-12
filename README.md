@@ -4,88 +4,97 @@ A word-guessing game inspired by Wordle. Guess the 5-letter word in 6 tries!
 
 ## Features
 
-- **Unlimited plays** - Play as many games as you want, no daily limit
-- **Color-coded feedback** - Green (correct), Yellow (wrong position), Gray (not in word)
-- **Virtual keyboard** - Click or type to enter letters
-- **Statistics tracking** - Track your games played, win percentage, and guess distribution
-- **Dark mode** - Toggle between light and dark themes
-- **Responsive design** - Works on desktop and mobile devices
-- **No build step** - Pure HTML, CSS, and JavaScript
+- Modern React + TypeScript application built with Vite
+- 14,856 valid 5-letter words for guessing
+- 900+ curated solution words
+- Light/Dark theme support
+- Statistics tracking with local storage
+- Responsive design for all screen sizes
+- Keyboard support for desktop play
+- Animated tile flips and shakes
 
-## How to Play
+## Development
 
-1. Guess the hidden 5-letter word in 6 tries
-2. Each guess must be a valid 5-letter word
-3. After each guess, the color of the tiles will change:
-   - **Green**: The letter is in the word and in the correct spot
-   - **Yellow**: The letter is in the word but in the wrong spot
-   - **Gray**: The letter is not in the word
-4. Click "New Game" to start a new game anytime
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Getting Started
+
+```bash
+cd wordix-app
+npm install
+npm run dev
+```
+
+The development server will start at `http://localhost:5173`.
+
+### Building for Production
+
+```bash
+cd wordix-app
+npm run build
+```
+
+The built files will be in `wordix-app/dist/`.
+
+### Running Tests
+
+```bash
+cd wordix-app
+npm run lint
+```
 
 ## Deploy to GitHub Pages
 
-### Option 1: Using GitHub Web Interface
+This project uses GitHub Actions for automated deployment.
 
-1. Create a new repository on GitHub
-2. Upload all files to the repository
-3. Go to **Settings** > **Pages**
-4. Under "Source", select **Deploy from a branch**
-5. Select **main** branch and **/ (root)** folder
-6. Click **Save**
-7. Your game will be live at `https://<username>.github.io/<repository-name>/`
+### Automatic Deployment
 
-### Option 2: Using Git Command Line
+1. Push changes to the `main` branch
+2. GitHub Actions will automatically build and deploy
 
-```bash
-# Initialize git repository
-git init
+### Manual Setup
 
-# Add all files
-git add .
-
-# Create initial commit
-git commit -m "Initial commit: Wordix game"
-
-# Add your GitHub repository as remote
-git remote add origin https://github.com/<username>/<repository-name>.git
-
-# Push to GitHub
-git push -u origin main
-```
-
-Then enable GitHub Pages in repository settings as described above.
+1. Go to your repository Settings > Pages
+2. Under "Build and deployment", select "GitHub Actions" as the source
+3. Push to main to trigger the deployment
 
 ## Project Structure
 
 ```
-wordix/
-├── index.html          # Main game page
-├── css/
-│   └── style.css       # Styling with animations and dark mode
-├── js/
-│   ├── words.js        # Word lists (solutions and valid guesses)
-│   ├── game.js         # Core game logic
-│   └── ui.js           # DOM manipulation and event handling
-└── README.md           # This file
+wordle/
+├── wordix-app/              # React application
+│   ├── src/
+│   │   ├── components/      # React components
+│   │   ├── data/            # Word lists and game data
+│   │   ├── hooks/           # Custom React hooks
+│   │   └── types.ts         # TypeScript types
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.ts
+├── .github/
+│   └── workflows/
+│       └── deploy.yml       # GitHub Actions workflow
+└── README.md
 ```
 
-## Local Development
+## How to Play
 
-Simply open `index.html` in a web browser. No build step or server required.
+1. Type a 5-letter word and press Enter
+2. Green tiles mean the letter is correct and in the right spot
+3. Yellow tiles mean the letter is in the word but wrong spot
+4. Gray tiles mean the letter is not in the word
+5. You have 6 tries to guess the word
 
-For live reload during development, you can use any local server:
+## Tech Stack
 
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js (npx)
-npx serve
-
-# Using PHP
-php -S localhost:8000
-```
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **GitHub Actions** - CI/CD deployment
 
 ## License
 
-MIT License - Feel free to use and modify as you wish.
+MIT

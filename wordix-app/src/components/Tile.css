@@ -1,0 +1,66 @@
+.tile {
+  width: 62px;
+  height: 62px;
+  border: 2px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  user-select: none;
+  transition: transform 0.1s;
+}
+
+.tile.filled {
+  border-color: var(--tile-border);
+  animation: pop 0.1s;
+}
+
+.tile.correct {
+  background-color: var(--correct);
+  border-color: var(--correct);
+  color: white;
+}
+
+.tile.present {
+  background-color: var(--present);
+  border-color: var(--present);
+  color: white;
+}
+
+.tile.absent {
+  background-color: var(--absent);
+  border-color: var(--absent);
+  color: white;
+}
+
+.tile.flip {
+  animation: flip 0.5s ease forwards;
+}
+
+@keyframes pop {
+  50% { transform: scale(1.1); }
+}
+
+@keyframes flip {
+  0% { transform: rotateX(0); }
+  50% { transform: rotateX(-90deg); }
+  100% { transform: rotateX(0); }
+}
+
+@media (max-width: 400px) {
+  .tile {
+    width: 52px;
+    height: 52px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .tile {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}

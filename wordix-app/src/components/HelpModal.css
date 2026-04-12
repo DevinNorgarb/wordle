@@ -1,0 +1,47 @@
+.examples {
+  margin: 16px 0;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.example-row {
+  display: flex;
+  gap: 5px;
+  margin: 8px 0;
+}
+
+.example-tile {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.example-tile.correct {
+  background-color: var(--correct);
+  border-color: var(--correct);
+  color: white;
+}
+
+.example-tile.present {
+  background-color: var(--present);
+  border-color: var(--present);
+  color: white;
+}
+
+.example-tile.absent {
+  background-color: var(--absent);
+  border-color: var(--absent);
+  color: white;
+}
+
+.hint {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}

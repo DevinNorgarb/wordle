@@ -1,0 +1,52 @@
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.guess-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.guess-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.guess-row .guess-num {
+  width: 12px;
+  font-weight: 600;
+}
+
+.guess-row .guess-bar {
+  min-width: 24px;
+  padding: 2px 8px;
+  background-color: var(--absent);
+  color: white;
+  font-weight: 600;
+  text-align: right;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.guess-row .guess-bar.highlight {
+  background-color: var(--correct);
+}

@@ -1,0 +1,42 @@
+.board {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.row.shake {
+  animation: shake 0.5s ease;
+}
+
+.row.bounce .tile {
+  animation: bounce 0.5s ease;
+}
+
+.row.bounce .tile:nth-child(2) { animation-delay: 0.1s; }
+.row.bounce .tile:nth-child(3) { animation-delay: 0.2s; }
+.row.bounce .tile:nth-child(4) { animation-delay: 0.3s; }
+.row.bounce .tile:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+}
+
+@keyframes bounce {
+  0%, 20% { transform: translateY(0); }
+  40% { transform: translateY(-30px); }
+  50% { transform: translateY(5px); }
+  60% { transform: translateY(-15px); }
+  80% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
