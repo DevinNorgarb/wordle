@@ -65,6 +65,9 @@ function App() {
         </button>
         <h1>Wordix</h1>
         <div className="header-right">
+          <button className="new-game-btn" onClick={newGame} aria-label="New game">
+            New
+          </button>
           <button className="icon-btn" onClick={() => setShowStats(true)} aria-label="Statistics">
             📊
           </button>
@@ -78,33 +81,24 @@ function App() {
         </div>
       </header>
 
+      <div className={`toast ${message ? 'show' : ''} ${gameOver && !won ? 'error' : gameOver && won ? 'success' : ''}`}>
+        {message}
+      </div>
+
       <main className="play-main">
-        <div className="board-section">
-          <div className="message-container">
-            <div className={`message ${message ? 'show' : ''} ${gameOver && !won ? 'error' : gameOver && won ? 'success' : ''}`}>
-              {message}
-            </div>
-          </div>
+        <Board
+          guesses={guesses}
+          currentGuess={currentGuess}
+          shakeRow={shakeRow}
+          bounceRow={bounceRow}
+        />
 
-          <Board
-            guesses={guesses}
-            currentGuess={currentGuess}
-            shakeRow={shakeRow}
-            bounceRow={bounceRow}
-          />
-        </div>
-
-        <div className="game-footer">
-          <Keyboard
-            keyboardState={getKeyboardState()}
-            onKey={addLetter}
-            onEnter={submitGuess}
-            onBackspace={removeLetter}
-          />
-          <button type="button" className="new-game-btn" onClick={newGame}>
-            New Game
-          </button>
-        </div>
+        <Keyboard
+          keyboardState={getKeyboardState()}
+          onKey={addLetter}
+          onEnter={submitGuess}
+          onBackspace={removeLetter}
+        />
       </main>
 
       <Modal isOpen={showHelp} onClose={() => setShowHelp(false)} title="How To Play">

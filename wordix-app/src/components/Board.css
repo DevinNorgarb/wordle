@@ -3,6 +3,7 @@
   grid-template-rows: repeat(6, 1fr);
   gap: var(--tile-gap, 5px);
   padding: var(--board-padding, 10px);
+  flex-shrink: 0;
 }
 
 .row {
